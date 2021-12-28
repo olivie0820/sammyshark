@@ -4,8 +4,15 @@ const { token } = require ('./config.json');
 const fs = require('fs');
 const { Client, Collection, Intents } = require ('discord.js');
 
+//	INITIALIZE CLIENT
 const client = new Client ({
-	intents: [Intents.FLAGS.GUILDS],
+	intents: [
+		Intents.FLAGS.GUILDS,
+		Intents.FLAGS.GUILD_MESSAGES,
+		Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+		Intents.FLAGS.GUILD_VOICE_STATES,
+		Intents.FLAGS.DIRECT_MESSAGES,
+		Intents.FLAGS.DIRECT_MESSAGE_REACTIONS],
 	presence: {
 		status: 'online',
 		activities: [{
@@ -15,6 +22,7 @@ const client = new Client ({
 	},
 });
 
+//	INITIALIZE COMMANDS
 const commands = [];
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -64,5 +72,5 @@ const rest = new REST({ version: '9' }).setToken(token);
 	}
 })();
 
-//	login
+//	LOGIN
 client.login (token);

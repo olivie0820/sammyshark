@@ -7,9 +7,14 @@ module.exports = {
 		//	list voice dependencies
 		console.log(generateDependencyReport());
 
-		//	destroy exiting voice connections
+		//	for each guild
 		client.guilds.cache.forEach(guild => {
+			//	destroy existing voice connections
 			if (getVoiceConnection(guild.id)) getVoiceConnection(guild.id).destroy();
+
+			// initialzie queue
+			guild.queue = [];
+			console.log (`added empty queue to ${guild.name}`);
 		});
 
 		//	ready message

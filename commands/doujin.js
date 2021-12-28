@@ -14,8 +14,7 @@ module.exports = {
 		const id = interaction.options.getInteger('id');
 
 		if (!nhentai.exists (id.toString())) {
-			await interaction.reply('sorry, no doujin exits for that code');
-			return;
+			return interaction.reply('sorry, no doujin exits for that code');
 		}
 
 		const doujin = await nhentai.getDoujin(id.toString());
@@ -29,6 +28,6 @@ module.exports = {
 			.setThumbnail (doujin.thumbnails[0])
 			.setFooter (`Pages: ${doujin.details.pages} | Uploaded: ${doujin.details.uploaded}`);
 
-		await interaction.reply({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
 	},
 };

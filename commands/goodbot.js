@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('goodbot')
 		.setDescription('>//////<'),
-	async execute(interaction) {
-		await interaction.reply('b-b-baka!!!\n>////////<');
+	execute(interaction) {
+		interaction.reply('b-b-baka!!!\n>////////<');
 	},
 };

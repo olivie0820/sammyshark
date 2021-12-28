@@ -8,7 +8,7 @@ module.exports = {
 		.addUserOption(option =>
 			option.setName('user')
 				.setDescription('the user to fetch from (defaults to caller)')),
-	async execute(interaction) {
+	execute(interaction) {
 		let image;
 		let name;
 		let color = '000000';
@@ -37,6 +37,6 @@ module.exports = {
 			.setTitle (name)
 			.setImage (image)
 			.setColor (color);
-		await interaction.reply({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
 	},
 };
